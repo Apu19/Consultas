@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1585
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultasModel", "ConsultasModel\ConsultasModel.csproj", "{985D536F-8BAF-4765-BA99-3EAE19ABFA38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultasWeb", "ConsultasWeb\ConsultasWeb.csproj", "{B2392409-00D4-4D49-B8F7-6C6E6256A569}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{985D536F-8BAF-4765-BA99-3EAE19ABFA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985D536F-8BAF-4765-BA99-3EAE19ABFA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985D536F-8BAF-4765-BA99-3EAE19ABFA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985D536F-8BAF-4765-BA99-3EAE19ABFA38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2392409-00D4-4D49-B8F7-6C6E6256A569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2392409-00D4-4D49-B8F7-6C6E6256A569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2392409-00D4-4D49-B8F7-6C6E6256A569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2392409-00D4-4D49-B8F7-6C6E6256A569}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C67ADEB3-636F-4E37-9075-3C30C6245556}
+	EndGlobalSection
+EndGlobal
