@@ -1,4 +1,4 @@
-﻿using ConsultasModel.DTO;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +9,25 @@ namespace ConsultasModel.DAL
 {
     public class EstacionesDAL
     {
-        private static List<Estacion> estaciones = new List<Estacion>();
+        public ConsultasBDEntities1 dbEntities = new ConsultasBDEntities1();
 
         public void Add(Estacion e)
         {
-            estaciones.Add(e);
+            dbEntities.Estacion.Add(e);
+            dbEntities.SaveChanges();
         }
 
         public List<Estacion> GetAll()
         {
-            return estaciones;
+            return dbEntities.Estacion.ToList();
         }
 
-        public void Remove(int capMaxTxt)
+        public void Remove(string direccion)
         {
-            //busqueda
-            Estacion est = estaciones.Find(e => e.CapMax == capMaxTxt);
-            //eliminación
-            estaciones.Remove(est);
+            //cambiar a direccion
+            Estacion e = dbEntities.Estacion.Find(direccion);
+            dbEntities.Estacion.Remove(e);
+            dbEntities.SaveChanges();
         }
     }
 }

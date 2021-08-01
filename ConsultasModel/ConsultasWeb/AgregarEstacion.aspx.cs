@@ -1,5 +1,5 @@
-﻿using ConsultasModel.DAL;
-using ConsultasModel.DTO;
+﻿using ConsultasModel;
+using ConsultasModel.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,17 +23,13 @@ namespace ConsultasWeb
             if (IsValid)
             {
                 Estacion es = new Estacion();
-                es.Direccion = DireccionTxt.Text;
-                es.CapMax = Convert.ToInt32(capMaxTxt.Text);
-                es.Region = regionTxt.Text;
-                es.Horario = HorarioTxt.Text;
+                es.direccion = DireccionTxt.Text;
+                es.capMax = Convert.ToInt32(capMaxTxt.Text);
+                es.region = DropDownList1.SelectedValue;
+                es.horario = HorarioTxt.Text;
                 EstacionesDAL estacionDAL = new EstacionesDAL();
                 estacionDAL.Add(es);
                 Response.Redirect("VerEstaciones.aspx");
-            }
-            else
-            {
-
             }
         }
     }

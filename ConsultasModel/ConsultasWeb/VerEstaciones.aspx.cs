@@ -1,5 +1,6 @@
-﻿using ConsultasModel.DAL;
-using ConsultasModel.DTO;
+﻿using ConsultasModel;
+using ConsultasModel.DAL;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,8 @@ namespace ConsultasWeb
         {
             if (e.CommandName == "eliminar")
             {
-                int capElminar = Convert.ToInt32(e.CommandArgument);
-                estacionDAL.Remove(capElminar);
+                string direccionEl = Convert.ToString(e.CommandArgument);
+                estacionDAL.Remove(direccionEl);
                 //Actualizar la grilla
                 CargarTabla(estacionDAL.GetAll());
             }

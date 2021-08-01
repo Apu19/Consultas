@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConsultasBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Estacion">
+          <Key>
+            <PropertyRef Name="direccion" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="capMax" Type="int" />
+          <Property Name="region" Type="varchar" MaxLength="50" />
+          <Property Name="horario" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PuntoCarga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" />
+          <Property Name="capMax" Type="int" />
+          <Property Name="fechaVenc" Type="varchar" MaxLength="40" />
+          <Property Name="direccionPunto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_estacion_punto">
+          <End Role="Estacion" Type="Self.Estacion" Multiplicity="0..1" />
+          <End Role="PuntoCarga" Type="Self.PuntoCarga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estacion">
+              <PropertyRef Name="direccion" />
+            </Principal>
+            <Dependent Role="PuntoCarga">
+              <PropertyRef Name="direccionPunto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConsultasBDModelStoreContainer">
+          <EntitySet Name="Estacion" EntityType="Self.Estacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PuntoCarga" EntityType="Self.PuntoCarga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_estacion_punto" Association="Self.fk_estacion_punto">
+            <End Role="Estacion" EntitySet="Estacion" />
+            <End Role="PuntoCarga" EntitySet="PuntoCarga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConsultasBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Estacion">
+          <Key>
+            <PropertyRef Name="direccion" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="capMax" Type="Int32" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="horario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PuntoCarga" Relationship="Self.fk_estacion_punto" FromRole="Estacion" ToRole="PuntoCarga" />
+        </EntityType>
+        <EntityType Name="PuntoCarga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="capMax" Type="Int32" />
+          <Property Name="fechaVenc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="direccionPunto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estacion" Relationship="Self.fk_estacion_punto" FromRole="PuntoCarga" ToRole="Estacion" />
+        </EntityType>
+        <Association Name="fk_estacion_punto">
+          <End Role="Estacion" Type="Self.Estacion" Multiplicity="0..1" />
+          <End Role="PuntoCarga" Type="Self.PuntoCarga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estacion">
+              <PropertyRef Name="direccion" />
+            </Principal>
+            <Dependent Role="PuntoCarga">
+              <PropertyRef Name="direccionPunto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConsultasBDEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Estacion" EntityType="Self.Estacion" />
+          <EntitySet Name="PuntoCarga" EntityType="Self.PuntoCarga" />
+          <AssociationSet Name="fk_estacion_punto" Association="Self.fk_estacion_punto">
+            <End Role="Estacion" EntitySet="Estacion" />
+            <End Role="PuntoCarga" EntitySet="PuntoCarga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConsultasBDModelStoreContainer" CdmEntityContainer="ConsultasBDEntities1">
+          <EntitySetMapping Name="Estacion">
+            <EntityTypeMapping TypeName="ConsultasBDModel.Estacion">
+              <MappingFragment StoreEntitySet="Estacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="capMax" ColumnName="capMax" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="horario" ColumnName="horario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PuntoCarga">
+            <EntityTypeMapping TypeName="ConsultasBDModel.PuntoCarga">
+              <MappingFragment StoreEntitySet="PuntoCarga">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="capMax" ColumnName="capMax" />
+                <ScalarProperty Name="fechaVenc" ColumnName="fechaVenc" />
+                <ScalarProperty Name="direccionPunto" ColumnName="direccionPunto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

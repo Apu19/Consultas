@@ -13,11 +13,10 @@
                     ControlToValidate="capMaxTxt" CssClass="text-danger"></asp:RequiredFieldValidator>
             </div>
              <div class="form-group">
-                  <label>Fecha de vencimiento</label>
-            <asp:Calendar ID="FechaVenc" runat="server" OnSelectionChanged="FechaVenc_SelectionChanged"></asp:Calendar>
-                 <asp:TextBox ID="FechaTxt" runat="server"></asp:TextBox>
+                  <label for="FechaTxt">Fecha de vencimiento</label>
+                 <asp:TextBox ID="FechaTxt" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
                  <asp:RequiredFieldValidator ID="ValidarFecha" runat="server" ErrorMessage="Seleccione la fecha de vencimiento"
-                      ControlToValidate="FechaTxt" CssClass="text-danger"></asp:RequiredFieldValidator>
+                      ControlToValidate="FechaTxt" CssClass="text-danger col-12"></asp:RequiredFieldValidator>
             </div>
              <div class="form-group">
                  <label>Tipo</label>
@@ -25,7 +24,12 @@
                  <asp:ListItem>Eléctrico</asp:ListItem>
                  <asp:ListItem>Dual</asp:ListItem>      
              </asp:DropDownList>
-            </div>         
+            </div>    
+            <div class="form-group">
+                <label for="DireccionTxt" class="col-12 mt-3">Dirección de estación</label>
+                <asp:DropDownList ID="DireccionTxt" CssClass="col-12 form-control" runat="server">
+                </asp:DropDownList>
+            </div>
         </div>
         <div class="card-footer">
             <asp:Button ID="Button1" runat="server" CssClass="btn btn-success" OnClick="Button1_Click" Text="Agregar" />

@@ -8,6 +8,7 @@
         <asp:GridView ID="EstacionesGrid" runat="server"  AutoGenerateColumns="false"
             EmptyDataText="No hay estaciones agregadas" CssClass="table table-hover" OnRowCommand="EstacionesGrid_RowCommand">
             <Columns>
+                <asp:BoundField HeaderText="ID" DataField="id"/>
                 <asp:BoundField HeaderText="Dirección" DataField="Direccion" />
                 <asp:BoundField HeaderText="Capacidad maxima de puntos de carga" DataField="CapMax" />
                 <asp:BoundField HeaderText="Región" DataField="region" />
@@ -16,7 +17,7 @@
                             <ItemTemplate>
                                 <asp:Button runat="server" Text="Sacar del Programa"
                                     CssClass="btn btn-danger" CommandName="eliminar"
-                                    CommandArgument='<%# Eval("CapMax") %>'></asp:Button>
+                                    CommandArgument='<%# Eval("direccion") %>'></asp:Button>
 
                             </ItemTemplate>
                         </asp:TemplateField>
